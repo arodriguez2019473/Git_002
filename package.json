@@ -1,13 +1,17 @@
 {
-  "name": "Control",
+  "name": "api_control",
   "version": "1.0.0",
-  "description": "Api de proyecto supervisado",
+  "description": "api de control academico",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "script": "node index.js"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "Auky Sey",
+  "author": "AukySey",
   "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.2"
+  }
 }
