@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const AlumnoSchema = Schema ({
+const ProfesorSchema = Schema({
 
     nombre:{
         type: String,
@@ -29,4 +29,4 @@ const AlumnoSchema = Schema ({
     }
 });
 
-module.exports = model('Alumno', AlumnoSchema);
+module.exports = model('Profesor', ProfesorSchema);
