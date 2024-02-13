@@ -33,7 +33,7 @@ router.put(
 
         check('id',`No es un id valido `).isMongoId(),
         check('id').custom(existeAlumnoById),
-        check("role").custom(esRoleValido),
+//        check("role").custom(esRoleValido),
 
         validarCampos
 

@@ -1,0 +1,75 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "alumnos",
+    "dateExported": "2024-02-13T23:24:33.354Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2b204d76-057e-4e8d-a176-2c3b7bf7c8ea",
+            "colId": "f34382f4-65b9-41fe-a006-35e397876f18",
+            "containerId": "",
+            "name": "AgregarAlumnos",
+            "url": "http://localhost:3000/api/alumnos",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-13T22:47:18.041Z",
+            "modified": "2024-02-13T22:55:35.123Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"nombre\":\"dsfsfsdf\",\n\"correo\": \"sdsfnsdjkfnl@kinal.edu.gt\",\n\"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a5202a2e-d053-42a0-a396-54a6b0339246",
+            "colId": "f34382f4-65b9-41fe-a006-35e397876f18",
+            "containerId": "",
+            "name": "get alumnos",
+            "url": "http://localhost:3000/api/alumnos",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-13T23:18:22.978Z",
+            "modified": "2024-02-13T23:18:33.854Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "393bcd61-8021-4522-a39c-057e4a2312c6",
+            "colId": "f34382f4-65b9-41fe-a006-35e397876f18",
+            "containerId": "",
+            "name": "eliminar alumnos",
+            "url": "http://localhost:3000/api/alumnos/65cbf44bb2dd51c9f7331000",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-13T23:18:53.704Z",
+            "modified": "2024-02-13T23:19:08.110Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2b622d62-c762-47bf-b61f-d178078cadae",
+            "colId": "f34382f4-65b9-41fe-a006-35e397876f18",
+            "containerId": "",
+            "name": "update",
+            "url": "http://localhost:3000/api/alumnos/65cbf29958b6db249083b97e",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-13T23:19:30.336Z",
+            "modified": "2024-02-13T23:22:44.135Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"nombre\":\"dsfsfsdf\",\n\"correo\": \"jjjjjj@kinal.edu.gt\",\n\"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
