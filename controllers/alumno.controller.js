@@ -2,7 +2,7 @@ const bcryptjs = require ('bcryptjs');
 const Alumno = require('../models/alumno');
 const { response, request } = require('express');
 
-const alumnoGet = async (req, res = response) => {
+const alumnosGet = async (req, res = response) => {
 
     const{limite, desde} = req.query;
     const query = {estado: true}
@@ -66,8 +66,10 @@ const putAlumnos = async (req, res = response) => {
 
 const alumnosPost = async (req, res) => {
 
-    const {nombre, correo, password} = req.body;
-    const alumno = new Alumno({nombre, correo, password});
+    const {nombre, correo, password, role} = req.body;
+    const alumno = new Alumno({nombre, correo, password, role});
+
+    alumno.role = 'STUDENT_ROLE';
 
     const salt = bcryptjs.genSaltSync();
     alumno.password = bcryptjs.hashSync(password, salt);
@@ -81,7 +83,7 @@ const alumnosPost = async (req, res) => {
 
 module.exports = {
     getalumnosById,
-    alumnoGet,
+    alumnosGet,
     alumnosDelete,
     putAlumnos,
     alumnosPost

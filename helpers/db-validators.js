@@ -15,3 +15,18 @@ const existenteEmail = async (correo = '') =>{
         throw new Error(`El correo ${ correo } ya esta registrado`);
     }
 }
+
+const existeAlumnoById = async (id = '') =>{
+    const existeAlumno = await Alumno.findOne({id});
+    if(existeAlumno){
+        throw new Error(`el usuario con el ${ _id } no existe`)
+    }
+}
+
+module.exports = {
+
+    esRoleValido,
+    existenteEmail,
+    existeAlumnoById
+
+}
