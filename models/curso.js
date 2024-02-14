@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const MateriaSchema = Schema({
+const CursoSchema = Schema({
 
     materia:{
         type: String,
@@ -20,6 +20,13 @@ const MateriaSchema = Schema({
     descripcion:{
         type: String,
         requre: [true, 'la descripcion del curso es obligatoria']
+    },  
+
+    estado:{
+        type: Boolean,
+        default:true
     }
 
-})
+});
+
+module.exports = model('Curso', CursoSchema);
