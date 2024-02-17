@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "loggin",
+    "dateExported": "2024-02-17T09:51:30.749Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "95061720-4a32-4f5d-ab02-3ca800e3e817",
+            "colId": "c81ee3e4-5e07-487f-ac8b-b083bf67886d",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-17T08:58:37.366Z",
+            "modified": "2024-02-17T09:50:33.913Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"correo\": \"auky@kinal.edu.gt\",\n    \"password\": \"$2a$10$ISA2vf/AC24JmFRMcGJmQeF145nE7ivbF338PC3ikaWXG5lnHOpn6\",\n    \"role\": \"STUDENT_ROLE\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1b89b86e-6a0f-4892-b249-d0eb95cabd72",
+            "colId": "c81ee3e4-5e07-487f-ac8b-b083bf67886d",
+            "containerId": "",
+            "name": "ingresar alumno",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-17T09:39:49.925Z",
+            "modified": "2024-02-17T09:40:48.586Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

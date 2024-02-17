@@ -89,6 +89,6 @@ module.exports = {
     profesoresPost,
     getprofesoresById,
     profesoresDelete,
-    putProfesor
+    putProfesor,
 
 }

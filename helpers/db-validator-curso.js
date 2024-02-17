@@ -7,6 +7,7 @@ const existeCursoById = async (id = '') =>{
     }
 }
 
+
 module.exports = {
     existeCursoById
 }

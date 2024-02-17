@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cursos",
+    "dateExported": "2024-02-17T09:51:27.023Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4b8cd3f1-c7f4-49f4-a2b4-7b12d06c371f",
+            "colId": "b17faf21-7583-4bfd-bae0-7f44fea96c43",
+            "containerId": "",
+            "name": "agregar curso",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-14T12:59:26.904Z",
+            "modified": "2024-02-14T13:03:30.731Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"materia\":\"matematica\",\n\"profesor\": \"carlos\",\n\"tiempo\": \"2 meses\",\n\"descripcion\": \"es para 6to\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

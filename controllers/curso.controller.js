@@ -69,24 +69,19 @@ const cursosPost = async (req, res) => {
     });
 };
 
-const accederCurso = async (req, res) => {
+const obtenerCursoPorId = async (req, res) => {
     const cursoId = req.params.id;
-    const alumnoId = req.user.id;
 
     try {
-        await existeCursoById(cursoId);
+        const curso = await Curso.findById(cursoId);
+        if (!curso) {
+            return res.status(404).json({ mensaje: 'Curso no encontrado' });
+        }
+        res.status(200).json({ curso });
     } catch (error) {
-        return res.status(404).json({ message: 'Curso no encontrado' });
+        console.error('Error al obtener el curso:', error);
+        res.status(500).json({ mensaje: 'Error interno del servidor' });
     }
-
-    const curso = await Curso.findById(cursoId).populate('alumnos');
-
-    const alumnoInscrito = curso.alumnos.some(alumno => alumno._id.toString() === alumnoId);
-
-    if (!alumnoInscrito) {
-        return res.status(403).json({ message: 'No tienes permiso para acceder a este curso' });
-    }
-    res.status(200).json({ curso });
 };
 
 module.exports = {
@@ -95,5 +90,5 @@ module.exports = {
     cursosDelete,
     putCurso,
     cursosPost,
-    accederCurso
+    obtenerCursoPorId
 };

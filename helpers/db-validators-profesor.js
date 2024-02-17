@@ -1,7 +1,7 @@
 const Role = require('../models/role');
 const Profesor = require('../models/profesor');
 
-const esRoleValido = async (role = '') => {
+const esRoleValidoP = async (role = 'TEACHER_ROLE') => {
     const existeRol = await Role.findOne({role});
 
     if(!existeRol){
@@ -26,7 +26,7 @@ const existeProfesorById = async (id = '') =>{
 
 module.exports = {
 
-    esRoleValido,
+    esRoleValidoP,
     existenteEmailProfesor,
     existeProfesorById
 
