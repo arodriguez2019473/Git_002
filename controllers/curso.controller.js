@@ -1,5 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const Curso = require('../models/curso');
+const { existeCursoById } = require('../helpers/db-validator-curso')
 
 const { response, request } = require('express');
 
@@ -68,10 +69,31 @@ const cursosPost = async (req, res) => {
     });
 };
 
+const accederCurso = async (req, res) => {
+    const cursoId = req.params.id;
+    const alumnoId = req.user.id;
+
+    try {
+        await existeCursoById(cursoId);
+    } catch (error) {
+        return res.status(404).json({ message: 'Curso no encontrado' });
+    }
+
+    const curso = await Curso.findById(cursoId).populate('alumnos');
+
+    const alumnoInscrito = curso.alumnos.some(alumno => alumno._id.toString() === alumnoId);
+
+    if (!alumnoInscrito) {
+        return res.status(403).json({ message: 'No tienes permiso para acceder a este curso' });
+    }
+    res.status(200).json({ curso });
+};
+
 module.exports = {
     getCursoById,
     cursosGet,
     cursosDelete,
     putCurso,
-    cursosPost
+    cursosPost,
+    accederCurso
 };

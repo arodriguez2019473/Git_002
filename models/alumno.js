@@ -20,12 +20,16 @@ const AlumnoSchema = Schema ({
     role:{
         type: String,
         require: true,
-        enum: ["TEACHER_ROLE"]
+        enum: ["STUDENT_ROLE"]
     },
 
     estado:{
         type: Boolean,
         default:true
+    },
+    cursos:{
+        type:Schema.Types.ObjectId,
+        ref:Curso
     }
 });
 
