@@ -46,16 +46,17 @@ const cursosDelete =  async (req, res) =>{
 }
 
 const putCurso = async (req, res = response) => {
-
+   
     const { id } = req.params;
     const { _id, ...resto } = req.body;
 
+    const curso = await Curso.findByIdAndUpdate(id, resto, { new: true });
+
     res.status(200).json({
-        msg: 'el curso a sido actualizado exitosamente :)',
+        msg: 'El curso ha sido actualizado exitosamente :)',
         curso
     });
-
-}
+};
 
 const cursosPost = async (req, res) => {
     const { materia, profesor, tiempo, descripcion } = req.body;
