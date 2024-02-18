@@ -1,5 +1,8 @@
+const { reques, response } = require('express')
 const Alumno = require('../models/alumno');
+const { generarJWT } = require("../helpers/generar-jwt")
 const Profesor = require('../models/profesor');
+const bcryptjs = require('bcrypt');
 
 exports.login = async (req, res) => {
     const { correo, password, role } = req.body;
@@ -22,3 +25,6 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 };
+
+
+
