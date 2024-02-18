@@ -26,29 +26,33 @@ router.get(
 );
 
 router.put(
-    "/:id",
-    [
-        check('id', 'No es un ID válido').isMongoId(),
-        check('id').custom(existeCursoById),
-        validarCampos
-    ],
-    putCurso
-);
-
-router.post(
-    "/:id",
-    [
+    '/:id',
+        [
+            
         validarJWT,
         tieneRolAutorizado('TEACHER_ROLE'),
         check("materia", "La materia no puede estar vacía").not().isEmpty(),
         check("profesor", "El nombre del profesor no puede estar vacío").not().isEmpty(),
         check("tiempo", "El tiempo no puede estar vacío").not().isEmpty(),
         check("descripcion", "La descripción no puede estar vacía").not().isEmpty(),
-//        check("role").custom(esRoleValidoP),
         validarCampos,
-    ],
-    cursosPost
-);
+
+        ],putCurso);
+
+router.post(
+        '/',
+        [
+
+        validarJWT,
+        tieneRolAutorizado('TEACHER_ROLE'),
+        check("materia", "La materia no puede estar vacía").not().isEmpty(),
+        check("profesor", "El nombre del profesor no puede estar vacío").not().isEmpty(),
+        check("tiempo", "El tiempo no puede estar vacío").not().isEmpty(),
+        check("descripcion", "La descripción no puede estar vacía").not().isEmpty(),
+        
+        validarCampos,
+
+        ], cursosPost);
 
 router.delete(
     "/:id",

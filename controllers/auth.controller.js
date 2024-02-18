@@ -1,30 +1,50 @@
-const { reques, response } = require('express')
-const Alumno = require('../models/alumno');
-const { generarJWT } = require("../helpers/generar-jwt")
-const Profesor = require('../models/profesor');
-const bcryptjs = require('bcrypt');
+const { request, response } = require("express");
+const Profesor = require("../models/profesor");
+const Alumno = require("../models/alumno");
+const bcryptjs = require('bcryptjs');
+const { generarJWT } = require("../helpers/generar-jwt");
 
-exports.login = async (req, res) => {
+const login = async (req = request, res = response) => {
     const { correo, password, role } = req.body;
-    
+
     try {
-        let user;
-        if (role === 'STUDENT_ROLE') {
-            user = await Alumno.findOne({ correo, password });
-        } else if (role === 'TEACHER_ROLE') {
-            user = await Profesor.findOne({ correo, password });
+        let usuario;
+
+        if (role === 'TEACHER_ROLE') {
+            usuario = await Profesor.findOne({ correo });
+        } else if (role === 'STUDENT_ROLE') {
+            usuario = await Alumno.findOne({ correo });
+        } else {
+            return res.status(400).json({ msg: "Rol no válido" });
         }
 
-        if (!user) {
-            return res.status(400).json({ message: 'Correo o contraseña incorrectos' });
+        if (!usuario) {
+            return res.status(400).json({ msg: "Credenciales incorrectas, correo no existe en la base de datos." });
         }
 
-        res.status(200).json({ message: 'Inicio de sesión exitoso', user });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error interno del servidor' });
+        if (!usuario.estado) {
+            return res.status(400).json({ msg: "El usuario no está activo en la base de datos." });
+        }
+
+        const validarPassword = bcryptjs.compareSync(password, usuario.password);
+        if (!validarPassword) {
+            return res.status(400).json({ msg: "La contraseña es incorrecta" });
+        }
+
+        const token = await generarJWT(usuario.id, role);
+
+        res.status(200).json({
+            msg: "Inicio de sesión exitoso",
+            usuario,
+            token
+        });
+
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ msg: "Error interno del servidor" });
     }
 };
 
-
-
+module.exports = {
+    login
+};

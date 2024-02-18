@@ -1,7 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/auth.controller');
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { login } = require('../controllers/auth.controller');
+const { validarCampos } = require('../middlewares/validar-campos');
 
-router.post('/login', authController.login);
+const router = Router();
+
+router.post(
+    '/login',
+    [
+        check('correo', "Este no es un correo válido").isEmail(),
+        check('password', "La contraseña es obligatoria").not().isEmpty(),
+        check('role', "El rol es obligatorio").not().isEmpty(),
+        validarCampos
+    ],
+    login
+);
 
 module.exports = router;

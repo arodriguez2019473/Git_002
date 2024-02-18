@@ -3,7 +3,7 @@ const Profesor = require('../models/profesor');
 const { request, response } = require('express');
 
 const validarJWT = async (req = request, res = response, next) => {
-    const token = req.header('x-token'); // Corrección aquí
+    const token = req.header('x-token'); 
 
     if (!token) {
 
