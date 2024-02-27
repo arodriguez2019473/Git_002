@@ -1,13 +1,13 @@
 const { response } = require("express");
 
 const esProfesor = (req, res, next) => {
-    if(!req.usuario){
+    if(!req.profesor){
         return res.status(500).json({
             msg: "Se desea validar un usuario sin validar token primero"
         });
     }
 
-    const { role, nombre } =  req.usuario;
+    const { role, nombre } =  req.profesor;
 
     if(role !== "TEACHER_ROLE"){
         return res.status(401).json({
@@ -19,13 +19,13 @@ const esProfesor = (req, res, next) => {
 
 const esAlumno = (req, res, next) => {
    
-    if(!req.usuario){
+    if(!req.alumno){
         return res.status(500).json({
             msg: "Se desea validar un usuario sin validar token primero"
         });
     }
 
-    const { role, nombre } =  req.usuario;
+    const { role, nombre } =  req.alumno;
 
     if(role !== "STUDENT_ROLE"){
    
@@ -37,22 +37,23 @@ const esAlumno = (req, res, next) => {
 }
 
 const tieneRolAutorizado = (...roles) => {
-   
-    return (req =request, res = response, next) =>{
-        if(!req.usuario){
-            return res.status(500).json({
-                msg: "Se desea validar un usuario sin validar token primero"
-            });
-        }
-    
-        if(!roles.includes(req.usuario.role)){
+    return (req = require, res = response, next) => {
+        if (!req.profesor) {
             return res.status(401).json({
-                msg: `El servicio requiere uno de los siguientes roles autorizados ${roles}`
+                msg: "Acceso denegado. Este servicio solo está disponible para profesores."
             });
         }
+
+        if (!roles.includes(req.profesor.role)) {
+            return res.status(401).json({
+                msg: "Acceso denegado. Este servicio solo está disponible para profesores."
+            });
+        }
+        
         next();
     }
 }
+
 
 
 module.exports ={

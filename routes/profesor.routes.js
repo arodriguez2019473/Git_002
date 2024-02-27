@@ -11,7 +11,7 @@ const {
     profesoresDelete,
     putProfesor } = require('../controllers/profesor.controller');
 
-    const {existeProfesorById,existenteEmailProfesor , esRoleValido} = require('../helpers/db-validators-profesor');
+    const {existeProfesorById,existenteEmailProfesor} = require('../helpers/db-validators-profesor');
 
 const router = Router();
 
@@ -39,7 +39,7 @@ router.post(
     "/",
     [
         check("nombre","el nombre no puede estar vacio").not().isEmpty(),
-        check("password","el passwordd debe ser mayor a 6 caracteres").isLength({min:6}),
+        check("password","el passwordd debe ser de 6 ").isLength({min:6}),
 
         check("correo").custom(existenteEmailProfesor),
 

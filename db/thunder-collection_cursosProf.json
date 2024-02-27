@@ -1,0 +1,95 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cursosProf",
+    "dateExported": "2024-02-27T22:57:14.908Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "dd4239ad-4206-46b7-bd62-9a95234e54ba",
+            "colId": "e183d5b5-7be4-44b9-9234-770664087d10",
+            "containerId": "",
+            "name": "agregar curso",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T19:08:59.346Z",
+            "modified": "2024-02-27T22:54:27.701Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRlMzhhMmZiN2NkYzRlMGI4ZmVkNzUiLCJpYXQiOjE3MDkwNzQ0NDUsImV4cCI6MTcwOTA3ODA0NX0.p5ptkMxCqh3omonwVEW6CtV8BBQl-LWkasbg6NY49jk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"materia\": \"fisica\",\n  \"profesor\": \"sadasd\",\n  \"tiempo\": \"2 meses\",\n  \"descripcion\": \"es para 6to\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c5d51268-892d-472f-bc5c-4db9a32c1d0b",
+            "colId": "e183d5b5-7be4-44b9-9234-770664087d10",
+            "containerId": "",
+            "name": "getCurso",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-27T22:06:36.218Z",
+            "modified": "2024-02-27T22:54:30.917Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRlMzhhMmZiN2NkYzRlMGI4ZmVkNzUiLCJpYXQiOjE3MDkwNzQ0NDUsImV4cCI6MTcwOTA3ODA0NX0.p5ptkMxCqh3omonwVEW6CtV8BBQl-LWkasbg6NY49jk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7dbcc5b6-740b-44ff-b251-0efcb47149b2",
+            "colId": "e183d5b5-7be4-44b9-9234-770664087d10",
+            "containerId": "",
+            "name": "getCursosProf",
+            "url": "http://localhost:3000/api/cursos/sadasd",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-27T22:32:21.602Z",
+            "modified": "2024-02-27T22:55:08.540Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRlMzhhMmZiN2NkYzRlMGI4ZmVkNzUiLCJpYXQiOjE3MDkwNzQ0NDUsImV4cCI6MTcwOTA3ODA0NX0.p5ptkMxCqh3omonwVEW6CtV8BBQl-LWkasbg6NY49jk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a0c044a4-a00c-476e-900a-2fd558bef6bd",
+            "colId": "e183d5b5-7be4-44b9-9234-770664087d10",
+            "containerId": "",
+            "name": "actualizar cursop",
+            "url": "http://localhost:3000/api/cursos/65de5a4756f5b4c40bc7b994",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-27T22:51:21.278Z",
+            "modified": "2024-02-27T22:54:37.556Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRlMzhhMmZiN2NkYzRlMGI4ZmVkNzUiLCJpYXQiOjE3MDkwNzQ0NDUsImV4cCI6MTcwOTA3ODA0NX0.p5ptkMxCqh3omonwVEW6CtV8BBQl-LWkasbg6NY49jk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"materia\": \"fisica\",\n  \"profesor\": \"sadasd\",\n  \"tiempo\": \"4 meses\",\n  \"descripcion\": \"es para 6to\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

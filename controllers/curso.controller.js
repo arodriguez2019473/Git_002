@@ -1,13 +1,12 @@
 const bcryptjs = require('bcryptjs');
 const Curso = require('../models/curso');
-const { existeCursoById } = require('../helpers/db-validator-curso')
 
 const { response, request } = require('express');
 
 const cursosGet = async (req, res = response) => {
 
-    const{ limite, desde } = req.query;
-    const query = { estado: true };
+    const{limite, desde} = req.query;
+    const query = {estado: true};
     
     const [total, cursos] = await Promise.all([
 
@@ -25,7 +24,7 @@ const cursosGet = async (req, res = response) => {
 
 }
 
-const getCursoById = async (req, res) => {
+/*const getCursoById = async (req, res) => {
     const { id } = req.params;
     const curso =  await Curso.findById(id);
 
@@ -34,6 +33,24 @@ const getCursoById = async (req, res) => {
 
     });
 }
+*/
+
+const getCursosByProfesor = async (req, res) => {
+    const { profesor } = req.params;
+
+    try {
+        const cursos = await Curso.find({ profesor: profesor });
+
+        if (!cursos || cursos.length === 0) {
+            return res.status(404).json({ message: 'No se encontraron cursos para este profesor.' });
+        }
+
+        res.status(200).json({ cursos });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error del servidor.' });
+    }
+};
 
 const cursosDelete =  async (req, res) =>{
     const { id } = req.params;
@@ -85,10 +102,11 @@ const obtenerCursoPorId = async (req, res) => {
 };
 
 module.exports = {
-    getCursoById,
+  //  getCursoById,
     cursosGet,
     cursosDelete,
     putCurso,
     cursosPost,
-    obtenerCursoPorId
+    obtenerCursoPorId,
+    getCursosByProfesor
 };

@@ -8,8 +8,7 @@ const CursoSchema = Schema({
     },
 
     profesor:{
-        type: Schema.Types.ObjectId,
-        ref: 'Profesor',
+        type: String,
         require: [true, 'el nombre del profe es obligatorio']  
     },
 

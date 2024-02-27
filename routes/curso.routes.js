@@ -2,9 +2,16 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const { tieneRolAutorizado, esAlumno, esProfesor  } = require('../middlewares/validar-roles');
-const { validarCampos, } = require('../middlewares/validar-campos');
+const { validarCampos,validarNombreProfesor } = require('../middlewares/validar-campos');
 
-const { getCursoById, cursosGet, cursosDelete, putCurso, cursosPost, obtenerCursoPorId } = require('../controllers/curso.controller');
+const { 
+    getCursoById,
+    cursosGet,
+    cursosDelete,
+    putCurso, 
+    cursosPost,
+    getCursosByProfesor
+ } = require('../controllers/curso.controller');
 
 const { existeCursoById } = require('../helpers/db-validator-curso');
 const { esRoleValidoP } = require('../helpers/db-validators-profesor');
@@ -13,9 +20,9 @@ const { validarJWT } = require('../middlewares/validarJWT');
 
 const router = Router();
 
-router.get('/:', cursosGet);
+router.get('/', cursosGet);
 
-router.get(
+/*router.get(
     "/:id",
     [
         check('id', 'No es un ID válido').isMongoId(),
@@ -23,6 +30,15 @@ router.get(
         validarCampos
     ],
     getCursoById
+);
+*/
+router.get(
+    "/:profesor",
+    [
+        check('profesor', 'El nombre del profesor no puede estar vacío').not().isEmpty(),
+        validarCampos
+    ],
+    getCursosByProfesor
 );
 
 router.put(
@@ -49,7 +65,7 @@ router.post(
         check("profesor", "El nombre del profesor no puede estar vacío").not().isEmpty(),
         check("tiempo", "El tiempo no puede estar vacío").not().isEmpty(),
         check("descripcion", "La descripción no puede estar vacía").not().isEmpty(),
-        
+        validarNombreProfesor,
         validarCampos,
 
         ], cursosPost);
