@@ -81,7 +81,39 @@ const alumnosPost = async (req, res) => {
 
 }
 
+const agregarAlumnoACurso = async (req, res) => {
+    const { idAlumno, idCurso } = req.body;
+
+    try {
+        // Verificar si tanto el alumno como el curso existen
+        const alumno = await Alumno.findById(idAlumno);
+        const curso = await Curso.findById(idCurso);
+
+        if (!alumno || !curso) {
+            return res.status(404).json({ error: 'Alumno o curso no encontrado' });
+        }
+
+        // Verificar si el alumno ya está inscrito en el curso
+        if (alumno.cursos.includes(curso._id)) {
+            return res.status(400).json({ error: 'El alumno ya está inscrito en este curso' });
+        }
+
+        // Agregar el curso al array de cursos del alumno y guardar los cambios
+        alumno.cursos.push(curso._id);
+        await alumno.save();
+
+        res.status(200).json({ message: 'Alumno agregado al curso exitosamente' });
+    } catch (error) {
+        console.error('Error al agregar alumno al curso:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+};
+
+
+
+
 module.exports = {
+    agregarAlumnoACurso,
     getalumnosById,
     alumnosGet,
     alumnosDelete,

@@ -29,7 +29,7 @@ const AlumnoSchema = Schema ({
     },
     
     cursos:{
-        type:Schema.Types.ObjectId,
+        type:String,
         ref:'Curso'
     }
 });

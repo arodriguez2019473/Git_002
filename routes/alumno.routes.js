@@ -8,7 +8,8 @@ const {
     alumnosGet,
     alumnosDelete,
     putAlumnos,
-    alumnosPost } = require('../controllers/alumno.controller');
+    alumnosPost,
+    agregarAlumnoACurso } = require('../controllers/alumno.controller');
 
     const {existenteEmail, esRoleValido, existeAlumnoById} = require('../helpers/db-validators');
 
@@ -64,5 +65,16 @@ router.delete(
 
         validarCampos
     ],alumnosDelete);
+
+    router.post(
+        "/id",
+        [
+            check('nombre', 'El ID del alumno es obligatorio').isMongoId(),
+            check('materia', 'El ID del curso es obligatorio').isMongoId(),
+            validarCampos
+        ],
+        agregarAlumnoACurso
+    );
+    
 
     module.exports = router;

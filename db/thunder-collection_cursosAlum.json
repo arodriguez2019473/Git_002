@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cursosAlum",
+    "dateExported": "2024-02-27T23:18:25.853Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b73017db-cb8b-4b17-88ca-4c82d046380e",
+            "colId": "387f1169-ea10-4324-86d4-da9d987fdd13",
+            "containerId": "",
+            "name": "IngresarCurso",
+            "url": "http://localhost:3000/api/alumnos/65de5a4756f5b4c40bc7b994",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T23:08:12.081Z",
+            "modified": "2024-02-27T23:16:50.766Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRlNmI3NzhmOGVhNTFjMDg1MTgxNmMiLCJpYXQiOjE3MDkwNzUzNDEsImV4cCI6MTcwOTA3ODk0MX0.AX-im355Xnc5dLewzwEurtmYAY0xUwsGjSG6wEYZQjo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
